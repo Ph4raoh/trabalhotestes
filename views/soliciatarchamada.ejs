@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      table,
+      th,
+      td {
+        border: 1px solid black;
+        border-collapse: collapse;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>Solicitar Segunda Chamada</h1>
+
+    <form action="/enviardados" method="post">
+      <label>Professor:</label>
+      <input
+        value="<%=prova.prof %>"
+        type="text"
+        name="prof"
+        disabled
+      /><br /><br />
+      <label>Materia:</label>
+      <input
+        value="<%= prova.materia %>"
+        type="text"
+        name="materia"
+        disabled
+      /><br /><br />
+      <label>Matricula:</label>
+      <input
+        value="<%= matricula %>"
+        type="text"
+        name="matricula"
+        disabled
+      /><br /><br />
+      <label>Motivo:</label>
+      <input id="motivo" type="text" name="name" required /><br /><br />
+      <input id="enviar" type="submit" value="Submit" />
+    </form>
+  </body>
+</html>
