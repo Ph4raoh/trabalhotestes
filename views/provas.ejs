@@ -1,49 +1,62 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <style>
-      table,
-      th,
-      td {
-        border: 1px solid black;
-        border-collapse: collapse;
-      }
-    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   </head>
 
   <body>
     <h1>Bem Vindo, <%= nome %></h1>
 
-    <table>
-      <tr>
-        <th>Matéria</th>
-        <th>Professor</th>
-        <th>Data Limite</th>
-        <th>Ação</th>
-      </tr>
-      <% for(var i=0; i < prova.length; i++) { %>
-      <tr>
-        <td><%= prova[i].materia %></td>
-        <td><%=prova[i].prof %></td>
-        <td><%=prova[i].dataLimite %></td>
-        <td>
-          <% if (provasDisponiveis[i]) { %>
-          <button
-            id="<%=prova[i].id %>"
-            onclick="window.location.href='/provasegundachamada/<%=prova[i].id %>'"
-            type="button"
-          >
-            Solicitar
-          </button>
-          <% } %><% if (!provasDisponiveis[i]) { %>
-          <button id="<%=prova[i].id %>" type="button" disabled>
-            Indisponível
-          </button>
-          <% } %>
-        </td>
-      </tr>
-      <% } %>
-    </table>
+    <button id="butSegundaChamada">Segunda Chamada</button>
+
+    <div id="tabela">
+      <table>
+        <tr>
+          <th>Matéria</th>
+          <th>Professor</th>
+          <th>Data Limite</th>
+          <th>Ação</th>
+        </tr>
+        <% for(var i=0; i < prova.length; i++) { %>
+        <tr>
+          <td><%= prova[i].materia %></td>
+          <td><%=prova[i].prof %></td>
+          <td><%=prova[i].dataLimite %></td>
+          <td>
+            <% if (provasDisponiveis[i]) { %>
+            <button
+              id="<%=prova[i].id %>"
+              onclick="window.location.href='/provasegundachamada/<%=prova[i].id %>'"
+              type="button"
+            >
+              Solicitar
+            </button>
+            <% } %><% if (!provasDisponiveis[i]) { %>
+            <button id="<%=prova[i].id %>" type="button" disabled>
+              Indisponível
+            </button>
+            <% } %>
+          </td>
+        </tr>
+        <% } %>
+      </table>
+    </div>
     <div id="mensagemdeerro"></div>
   </body>
+  <style>
+    table,
+    th,
+    td {
+      border: 1px solid black;
+      border-collapse: collapse;
+    }
+  </style>
+  <script>
+    $("#tabela").hide();
+    $(document).ready(function () {
+      $("#butSegundaChamada").click(function () {
+        $("#tabela").slideToggle("flast");
+      });
+    });
+  </script>
 </html>
