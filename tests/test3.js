@@ -11,7 +11,9 @@ describe("Solicitar Segunda Chamada", function () {
       .setValue("input[id=senha]", "asdfghjkll")
       .assert.visible("input[id=enviar]")
       .click("input[id=enviar]")
-      .assert.containsText("#ostacmid", "Indisponível");
+      .assert.visible("button[id=butSegundaChamada]")
+      .click("button[id=butSegundaChamada]")
+      .assert.containsText("button[id=pirchlep]", "Indisponível");
   });
 
   after((browser) => browser.end());
